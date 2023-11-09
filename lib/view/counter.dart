@@ -15,8 +15,8 @@ class _CounterViewState extends State<CounterView> {
   void initState() {
     super.initState();
     // CacheHelper.clear();
-
   }
+
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
@@ -52,7 +52,8 @@ class _CounterViewState extends State<CounterView> {
             FloatingActionButton(
               onPressed: () {
                 count = 0;
-                 setState(() {});
+                CacheHelper.setCount(count);
+                setState(() {});
               },
               child: Text("clear"),
             ),

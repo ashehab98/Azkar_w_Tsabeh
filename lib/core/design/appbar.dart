@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:seb7a/core/logic/helper_method.dart';
+import 'package:seb7a/view/main_page/view.dart';
 
 class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
-  MainAppBar({super.key, required this.text});
+  MainAppBar({super.key, required this.text,});
   final String text;
-  @override
+   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 10.w),
         height: 55.h,
-        color: Color(0xffcfdde5),
+        color: Color(0xff8ECDDD),
         child: Row(children: [
           Container(
             padding: EdgeInsets.only(bottom: 4.h, right: 3.w),
@@ -21,7 +23,9 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
               borderRadius: BorderRadius.circular(8.r),
             ),
             child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                navigateTo(MainPageView());
+              },
               icon: Icon(Icons.arrow_back_ios),
             ),
           ),
