@@ -9,6 +9,7 @@ import 'package:seb7a/view/pages/azkar_after_pray/view.dart';
 import 'package:seb7a/view/pages/azkar_masa2/view.dart';
 import 'package:seb7a/view/pages/azkar_saba7/view.dart';
 import 'package:seb7a/view/pages/doaa_elsafar/view.dart';
+import 'package:seb7a/view/pages/quran/screens/view.dart';
 import 'package:seb7a/view/pages/sebha/view.dart';
 import 'package:seb7a/view/pages/tsabe7/view.dart';
 
@@ -42,7 +43,7 @@ class MainPageView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "إختر نوع الأذكار",
+                        "اختر نوع الأذكار",
                         style: TextStyle(
                           decoration: TextDecoration.underline,
                           color: Colors.brown,
@@ -197,28 +198,56 @@ class MainPageView extends StatelessWidget {
                           ),
                         ],
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          navigateTo(QeblaView());
-                        },
-                        child: Container(
-                          height: 100.h,
-                          width: 110.w,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15.r),
-                              border:
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              navigateTo(QeblaView());
+                            },
+                            child: Container(
+                              height: 100.h,
+                              width: 110.w,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15.r),
+                                  border:
                                   Border.all(color: Colors.grey, width: 4.w)),
-                          child: Center(
-                            child: Text(
-                              "إتجاة القبلة",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20.sp,
+                              child: Center(
+                                child: Text(
+                                  "إتجاة القبلة",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20.sp,
+                                  ),
+                                ),
                               ),
                             ),
                           ),
-                        ),
+                          GestureDetector(
+                            onTap: () {
+                              navigateTo(QuranView());
+                             },
+                            child: Container(
+                              height: 100.h,
+                              width: 110.w,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15.r),
+                                  border: Border.all(
+                                      color: Colors.grey, width: 4.w)),
+                              child: Center(
+                                child: Text(
+                                  "المصحف",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20.sp,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
+
                     ]),
               ),
             ],

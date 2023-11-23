@@ -4,9 +4,12 @@ import 'package:seb7a/core/logic/helper_method.dart';
 import 'package:seb7a/view/main_page/view.dart';
 
 class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
-  MainAppBar({super.key, required this.text,});
+  MainAppBar({
+    super.key,
+    required this.text,
+  });
   final String text;
-   @override
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
@@ -29,7 +32,6 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
               icon: Icon(Icons.arrow_back_ios),
             ),
           ),
-
           Expanded(
             child: Center(
               child: Text(

@@ -23,7 +23,8 @@ class QiblahMaps extends StatefulWidget {
 
 class _QiblahMapsState extends State<QiblahMaps> {
   final Completer<GoogleMapController> _controller = Completer();
-  LatLng position = LatLng(36.800636, 10.180358);
+
+  LatLng position = LatLng(21.422487, 39.826206);
 
   late final _future = _checkLocationStatus();
   final _positionStream = StreamController<LatLng>.broadcast();
@@ -125,7 +126,7 @@ class _QiblahMapsState extends State<QiblahMaps> {
     if (locationStatus.enabled) {
       return await Geolocator.getCurrentPosition();
     }
-    return null;
+    return Future.error('Location permissions are denied');
   }
 
   void _updateCamera() async {

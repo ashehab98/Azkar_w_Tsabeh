@@ -13,3 +13,17 @@ AppBarTheme getMyAppBarTheme() {
     ),
   );
 }
+
+var kTextStyle = TextStyle(
+  fontFamily: 'Amiri',
+  fontWeight: FontWeight.normal,
+  color: Colors.white,
+);
+var kWhiteTextStyle = TextStyle(
+  fontFamily: 'Amiri',
+  fontWeight: FontWeight.normal,
+  color: Colors.white,
+);
+const PRIMARY_COLOR =
+// Color(0xFFEA1556);
+Colors.cyan;
