@@ -14,12 +14,12 @@ AppBarTheme getMyAppBarTheme() {
   );
 }
 
-var kTextStyle = TextStyle(
+var kTextStyle = const TextStyle(
   fontFamily: 'Amiri',
   fontWeight: FontWeight.normal,
   color: Colors.white,
 );
-var kWhiteTextStyle = TextStyle(
+var kWhiteTextStyle = const TextStyle(
   fontFamily: 'Amiri',
   fontWeight: FontWeight.normal,
   color: Colors.white,

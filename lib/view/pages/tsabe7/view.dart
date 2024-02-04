@@ -10,7 +10,7 @@ class Tasabe7View extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
      child: Scaffold(
-       appBar: MainAppBar(
+       appBar: const MainAppBar(
          text: 'التسابيح',
        ),
        body: ListView(

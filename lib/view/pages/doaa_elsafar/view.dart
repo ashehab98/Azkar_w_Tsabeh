@@ -10,7 +10,7 @@ class DoaaSafarView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-         appBar: MainAppBar(
+         appBar: const MainAppBar(
           text: 'دعاء الخروج من المنزل و السفر',
         ),
         body: ListView(

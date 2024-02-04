@@ -4,7 +4,6 @@ import 'dart:math' show pi;
 import 'package:flutter/material.dart';
 import 'package:flutter_qiblah/flutter_qiblah.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:seb7a/core/logic/app_image.dart';
 import 'package:seb7a/view/pages/qebla/loading_indecator.dart';
@@ -13,6 +12,8 @@ import 'package:seb7a/view/pages/qebla/location_error_widget.dart';
 import '../../../gen/assets.gen.dart';
 
 class QiblahCompass extends StatefulWidget {
+  const QiblahCompass({super.key});
+
   @override
   _QiblahCompassState createState() => _QiblahCompassState();
 }
@@ -44,8 +45,9 @@ class _QiblahCompassState extends State<QiblahCompass> {
       child: StreamBuilder(
         stream: stream,
         builder: (context, AsyncSnapshot<LocationStatus> snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting)
-            return LoadingIndicator();
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const LoadingIndicator();
+          }
           if (snapshot.data!.enabled == true) {
             switch (snapshot.data!.status) {
               case LocationPermission.always:
@@ -88,8 +90,9 @@ class _QiblahCompassState extends State<QiblahCompass> {
       await FlutterQiblah.requestPermissions();
       final s = await FlutterQiblah.checkLocationStatus();
       _locationStreamController.sink.add(s);
-    } else
+    } else {
       _locationStreamController.sink.add(locationStatus);
+    }
   }
 }
 
@@ -108,14 +111,17 @@ class QiblahCompassWidget extends StatelessWidget {
 
   );
 
+  QiblahCompassWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
 
       stream: FlutterQiblah.qiblahStream,
       builder: (_, AsyncSnapshot<QiblahDirection> snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting)
-          return LoadingIndicator();
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const LoadingIndicator();
+        }
 
         final qiblahDirection = snapshot.data!;
 

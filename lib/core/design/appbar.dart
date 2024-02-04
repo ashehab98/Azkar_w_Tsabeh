@@ -4,7 +4,7 @@ import 'package:seb7a/core/logic/helper_method.dart';
 import 'package:seb7a/view/main_page/view.dart';
 
 class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
-  MainAppBar({
+  const MainAppBar({
     super.key,
     required this.text,
   });
@@ -15,7 +15,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 10.w),
         height: 55.h,
-        color: Color(0xff8ECDDD),
+        color: const Color(0xff8ECDDD),
         child: Row(children: [
           Container(
             padding: EdgeInsets.only(bottom: 4.h, right: 3.w),
@@ -27,9 +27,9 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
             child: IconButton(
               onPressed: () {
-                navigateTo(MainPageView());
+                navigateTo(const MainPageView());
               },
-              icon: Icon(Icons.arrow_back_ios),
+              icon: const Icon(Icons.arrow_back_ios),
             ),
           ),
           Expanded(

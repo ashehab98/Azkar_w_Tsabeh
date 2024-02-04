@@ -9,13 +9,15 @@ import 'package:seb7a/view/pages/qebla/loading_indecator.dart';
 import 'package:seb7a/view/pages/qebla/location_error_widget.dart';
 
 class QiblahMaps extends StatefulWidget {
-  static final meccaLatLong = const LatLng(21.422487, 39.826206);
+  static const meccaLatLong = LatLng(21.422487, 39.826206);
   static final meccaMarker = Marker(
-    markerId: MarkerId("mecca"),
+    markerId: const MarkerId("mecca"),
     position: meccaLatLong,
     icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueOrange),
     draggable: false,
   );
+
+  const QiblahMaps({super.key});
 
   @override
   _QiblahMapsState createState() => _QiblahMapsState();
@@ -24,7 +26,7 @@ class QiblahMaps extends StatefulWidget {
 class _QiblahMapsState extends State<QiblahMaps> {
   final Completer<GoogleMapController> _controller = Completer();
 
-  LatLng position = LatLng(21.422487, 39.826206);
+  LatLng position = const LatLng(31.0413796,31.3416399);
 
   late final _future = _checkLocationStatus();
   final _positionStream = StreamController<LatLng>.broadcast();
@@ -41,19 +43,22 @@ class _QiblahMapsState extends State<QiblahMaps> {
       child: FutureBuilder(
         future: _future,
         builder: (_, AsyncSnapshot<Position?> snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting)
-            return LoadingIndicator();
-          if (snapshot.hasError)
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const LoadingIndicator();
+          }
+          if (snapshot.hasError) {
             return LocationErrorWidget(
               error: snapshot.error.toString(),
             );
+          }
 
           if (snapshot.data != null) {
             final loc =
             LatLng(snapshot.data!.latitude, snapshot.data!.longitude);
             position = loc;
-          } else
+          } else {
             _positionStream.sink.add(position);
+          }
 
           return StreamBuilder(
 
@@ -68,12 +73,11 @@ class _QiblahMapsState extends State<QiblahMaps> {
                 target: position,
                 zoom: 11,
               ),
-              markers: Set<Marker>.of(
-                <Marker>[
+              markers: <Marker>{
                   QiblahMaps.meccaMarker,
                   Marker(
                     draggable: true,
-                    markerId: MarkerId('Marker'),
+                    markerId: const MarkerId('Marker'),
                     position: position,
                     icon: BitmapDescriptor.defaultMarker,
                     onTap: _updateCamera,
@@ -83,12 +87,10 @@ class _QiblahMapsState extends State<QiblahMaps> {
                     },
                     zIndex: 5,
                   ),
-                ],
-              ),
-              circles: Set<Circle>.of(
-                [
+                },
+              circles: <Circle>{
                   Circle(
-                    circleId: CircleId("Circle"),
+                    circleId: const CircleId("Circle"),
                     radius: 10.r,
                     center: position,
                     fillColor:
@@ -98,19 +100,16 @@ class _QiblahMapsState extends State<QiblahMaps> {
                     Theme.of(context).primaryColorDark.withAlpha(100),
                     zIndex: 3,
                   )
-                ],
-              ),
-              polylines: Set<Polyline>.of(
-                [
+                },
+              polylines: <Polyline>{
                   Polyline(
-                    polylineId: PolylineId("Line"),
+                    polylineId: const PolylineId("Line"),
                     points: [position, QiblahMaps.meccaLatLong],
                     color: Theme.of(context).primaryColor,
                     width: 5,
                     zIndex: 4,
                   )
-                ],
-              ),
+                },
               onMapCreated: (GoogleMapController controller) {
                 _controller.complete(controller);
               },

@@ -17,10 +17,11 @@ class SebhaView extends StatefulWidget {
 class _SebhaViewState extends State<SebhaView> {
   int count = CacheHelper.getCount();
 
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: MainAppBar(text: "السبحة"),
+        appBar: const MainAppBar(text: "السبحة"),
         body: Stack(children: [
           AppImage(
             Assets.images.Sebha.path,

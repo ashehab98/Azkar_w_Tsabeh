@@ -9,7 +9,7 @@ import '../models/verse.dart';
 class SearchControllerr extends BaseController {
   List<Surah> surahList = [];
   final foundedVerses = <Verse>[].obs;
-  final _debouncer = Debouncer(delay: Duration(milliseconds: 300));
+  final _debouncer = Debouncer(delay: const Duration(milliseconds: 300));
   final _repeated = 0.obs;
 
   int get repeatCount => _repeated.value;
@@ -37,7 +37,7 @@ class SearchControllerr extends BaseController {
       foundedVerses.clear();
       if (word.trim().length >= 2) {
         String normalisedWord = normalise(word);
-        surahList.forEach((surah) {
+        for (var surah in surahList) {
           surah.verses.forEach((key, value) {
             int verseNumber = int.parse(key.split('_')[1]);
             if (verseNumber > 0) {
@@ -50,7 +50,7 @@ class SearchControllerr extends BaseController {
               }
             }
           });
-        });
+        }
       }
     });
     setState(ViewState.idle);

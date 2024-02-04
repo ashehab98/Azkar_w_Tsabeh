@@ -7,7 +7,7 @@ import '../model/model.dart';
 
 class SurahPage extends StatelessWidget {
   final Surah surah;
-  SurahPage({required this.surah});
+  const SurahPage({super.key, required this.surah});
   @override
   Widget build(BuildContext context) {
     int count = surah.versesCount;
@@ -37,10 +37,10 @@ class SurahPage extends StatelessWidget {
             ),
             child: IconButton(
               onPressed: () {
-                navigateTo(QuranView());
+                navigateTo(const QuranView());
               },
-              icon: Icon(Icons.arrow_back_ios),
-              color: Color(0xff86A789),
+              icon: const Icon(Icons.arrow_back_ios),
+              color: const Color(0xff86A789),
             ),
           ),
         ),
@@ -64,9 +64,7 @@ class SurahPage extends StatelessWidget {
                     children: [
                       for (var i = 1; i <= count; i++) ...{
                         TextSpan(
-                          text: ' ' +
-                              quran.getVerse(index, i, verseEndSymbol: false) +
-                              ' ',
+                          text: ' ${quran.getVerse(index, i, verseEndSymbol: false)} ',
                           style: TextStyle(
                             fontFamily: 'Kitab',
                             fontSize: 25.sp,
@@ -76,13 +74,13 @@ class SurahPage extends StatelessWidget {
                         WidgetSpan(
                             alignment: PlaceholderAlignment.middle,
                             child: CircleAvatar(
+                              radius: 14.r,
                               child: Text(
                                 '$i',
                                 textAlign: TextAlign.center,
                                 textScaleFactor:
                                     i.toString().length <= 2 ? 1 : .8,
                               ),
-                              radius: 14.r,
                             ))
                       }
                     ],
@@ -107,7 +105,7 @@ class SurahPage extends StatelessWidget {
         children: [
           if (surah.id != 9)
             Text(
-              ' ' + quran.basmala + ' ',
+              ' ${quran.basmala} ',
               textDirection: TextDirection.rtl,
               style: TextStyle(
                 color: Colors.brown,

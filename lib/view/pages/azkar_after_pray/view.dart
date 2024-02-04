@@ -11,7 +11,7 @@ class AzkarAfterPrayView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
      child: Scaffold(
-       appBar: MainAppBar(
+       appBar: const MainAppBar(
          text: 'أذكار ما بعد الصلاة المفروضة',
        ),
        body: ListView(

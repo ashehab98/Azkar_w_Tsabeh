@@ -11,6 +11,8 @@ import '../../quran_search/screens/search.dart';
 import '../model/model.dart';
 
 class QuranView extends StatefulWidget {
+  const QuranView({super.key});
+
   @override
   _QuranViewState createState() => _QuranViewState();
 }
@@ -19,7 +21,7 @@ class _QuranViewState extends State<QuranView> with TickerProviderStateMixin {
   List<Surah> surahList = [];
   int selectedIndex = 0;
   bool isReverse = false;
-  ScrollController _controller = ScrollController();
+  final ScrollController _controller = ScrollController();
   @override
   void initState() {
     readJson();
@@ -62,24 +64,24 @@ class _QuranViewState extends State<QuranView> with TickerProviderStateMixin {
           ),
           child: IconButton(
             onPressed: () {
-              navigateTo(MainPageView());
+              navigateTo(const MainPageView());
             },
-            icon: Icon(Icons.arrow_back_ios),
-            color: Color(0xff86A789),
+            icon: const Icon(Icons.arrow_back_ios),
+            color: const Color(0xff86A789),
           ),
         ),
         actions: [
           IconButton(
             onPressed: () {
-              navigateTo(SearchPage());
+              navigateTo(const SearchPage());
             },
-            icon: Icon(Icons.search),
-            color: Color(0xff86A789),
+            icon: const Icon(Icons.search),
+            color: const Color(0xff86A789),
           ),
         ],
       ),
       body: surahList.isEmpty
-          ? Center(child: CircularProgressIndicator())
+          ? const Center(child: CircularProgressIndicator())
           : chaptersList(isReverse ? surahList.reversed.toList() : surahList),
     );
   }

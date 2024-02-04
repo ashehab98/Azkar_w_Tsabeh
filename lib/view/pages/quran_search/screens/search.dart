@@ -11,6 +11,8 @@ import '../components/rounded_numbers.dart';
 import '../controllers/search_controller.dart';
 
 class SearchPage extends StatefulWidget {
+  const SearchPage({super.key});
+
   @override
   State<SearchPage> createState() => _SearchPageState();
 }
@@ -63,17 +65,17 @@ class _SearchPageState extends State<SearchPage> {
           ),
           child: IconButton(
             onPressed: () {
-              navigateTo(QuranView());
+              navigateTo(const QuranView());
             },
-            icon: Icon(Icons.arrow_back_ios),
-            color: Color(0xff86A789),
+            icon: const Icon(Icons.arrow_back_ios),
+            color: const Color(0xff86A789),
           ),
         ),
       ),
       body: Obx(
         () => SafeArea(
           child: _controller.isBusy
-              ? LoadingWidget()
+              ? const LoadingWidget()
               : Padding(
                   padding: EdgeInsets.all(20.r),
                   child: Column(
@@ -82,7 +84,7 @@ class _SearchPageState extends State<SearchPage> {
                         onChanged: (value) {
                           _controller.searchByWord(value);
                         },
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           hintText: 'كلمة البحث',
                           suffixIcon: Icon(
                             Icons.search,

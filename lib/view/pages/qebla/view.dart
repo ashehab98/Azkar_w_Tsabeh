@@ -6,6 +6,8 @@ import 'package:seb7a/view/pages/qebla/qiblah_compass.dart';
 import 'package:seb7a/view/pages/qebla/qiblah_maps.dart';
 
 class QeblaView extends StatefulWidget {
+  const QeblaView({super.key});
+
   @override
   _QeblaViewState createState() => _QeblaViewState();
 }
@@ -17,21 +19,24 @@ class _QeblaViewState extends State<QeblaView> {
   Widget build(BuildContext context) {
     return Scaffold(
       // backgroundColor: Colors.indigo.withOpacity(.411),
-      appBar: MainAppBar(text: "إتجاة القبلة"),
+      appBar: const MainAppBar(text: "إتجاة القبلة"),
       body: FutureBuilder(
         future: _deviceSupport,
         builder: (_, AsyncSnapshot<bool?> snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting)
-            return LoadingIndicator();
-          if (snapshot.hasError)
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const LoadingIndicator();
+          }
+          if (snapshot.hasError) {
             return Center(
               child: Text("Error: ${snapshot.error.toString()}"),
             );
+          }
 
-          if (snapshot.data!)
-            return QiblahCompass();
-          else
-            return QiblahMaps();
+          if (snapshot.data!) {
+            return const QiblahCompass();
+          } else {
+            return const QiblahMaps();
+          }
         },
       ),
     );

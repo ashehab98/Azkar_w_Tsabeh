@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-import '../../../../core/constants.dart';
 
 class LoadingWidget extends StatelessWidget {
   final double size;
 
-  LoadingWidget({this.size = 50});
+  const LoadingWidget({super.key, this.size = 50});
 
   @override
   Widget build(BuildContext context) {
